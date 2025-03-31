@@ -20,6 +20,15 @@ select v.customer_id, COUNT(v.visit_id) AS count_no_trans from Visits v LEFT JOI
 select customer_id, COUNT(visit_id) AS count_no_trans FROM Visits where visit_id NOT IN (select visit_id from Transactions) group by customer_id;
 
 ------------------------------------------------------------------------------------------------------------------------------
+#197. Rising Temperature
+#Write a solution to find all dates' id with higher temperatures compared to its previous dates (yesterday).
+select w.id from Weather w JOIN Weather w2 ON  DATEDIFF(w.recordDate, w2.recordDate) =1 where w.temperature > w2.temperature;
 
+------------------------------------------------------------------------------------------------------------------------------
+#1661. Average Time of Process per Machine
+#Write a solution to find the average time each machine takes to complete a process. The resulting table should have the machine_id along with the average time as processing_time, which should be rounded to 3 decimal places.
+SELECT a.machine_id, ROUND(AVG(b.timestamp - a.timestamp), 3) AS processing_time from Activity a JOIN Activity b ON a.machine_id = b.machine_id and a.process_id= b.process_id and a.activity_type='start' and b.activity_type='end' group by a.machine_id;
+  
+------------------------------------------------------------------------------------------------------------------------------
 
 
