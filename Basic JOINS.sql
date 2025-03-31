@@ -1,3 +1,4 @@
+https://leetcode.com/studyplan/top-sql-50/
 ------------------------------------------------------------------------------------------------------------------------------
                                                   #BASIC JOINS#
 #1378. Replace Employee ID With The Unique Identifier
@@ -30,5 +31,23 @@ select w.id from Weather w JOIN Weather w2 ON  DATEDIFF(w.recordDate, w2.recordD
 SELECT a.machine_id, ROUND(AVG(b.timestamp - a.timestamp), 3) AS processing_time from Activity a JOIN Activity b ON a.machine_id = b.machine_id and a.process_id= b.process_id and a.activity_type='start' and b.activity_type='end' group by a.machine_id;
   
 ------------------------------------------------------------------------------------------------------------------------------
+#577. Employee Bonus
+#Write a solution to report the name and bonus amount of each employee with a bonus less than 1000.
+select e.name, b.bonus from Employee e left join Bonus b ON e.empId = b.empId where b.bonus<1000 or b.bonus IS NULL;
+
+------------------------------------------------------------------------------------------------------------------------------
+#1280. Students and Examinations
+#Write a solution to find the number of times each student attended each exam. Return the result table ordered by student_id and subject_name.
+select s.student_id, s.student_name, sb.subject_name, COUNT(e.subject_name) AS attended_exams FROM Students s JOIN Subjects sb LEFT JOIN Examinations e ON s.student_id = e.student_id AND sb.subject_name = e.subject_name GROUP BY s.student_id, sb.subject_name ORDER BY s.student_id ASC, sb.subject_name ASC;
+
+------------------------------------------------------------------------------------------------------------------------------
+#570. Managers with at Least 5 Direct Reports
+#Write a solution to find managers with at least five direct reports.
+SELECT a.name FROM Employee a JOIN Employee b ON a.id = b.managerId GROUP BY b.managerId HAVING COUNT(*) >= 5;
+
+------------------------------------------------------------------------------------------------------------------------------
+#1934. Confirmation Rate
+#Write a solution to find the confirmation rate of each user.
+Select s.user_id, ROUND(AVG(if(c.action='confirmed',1,0)),2) AS confirmation_rate from Signups s left join Confirmations c ON s.user_id=c.user_id group by user_id;
 
 
