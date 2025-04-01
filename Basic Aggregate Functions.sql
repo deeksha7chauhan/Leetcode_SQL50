@@ -28,7 +28,7 @@ SELECT query_name, ROUND(AVG(rating/position),2) AS quality, ROUND((SUM(rating<3
 #1193. Monthly Transactions I
 #Write an SQL query to find for each month and country, the number of transactions and their total amount, the number of approved transactions and their total amount.
 # Write your MySQL query statement below
-select DATE_FORMAT(trans_date, '%Y-%m') as month, country, count(trans_date) as trans_count,  sum(if(state='approved', 1, 0)) as approved_count, sum(amount) as trans_total_amount,  sum(if(state='approved', amount, 0)) as approved_total_amount
+select LEFT(trans_date, 7) as month, country, count(trans_date) as trans_count,  sum(if(state='approved', 1, 0)) as approved_count, sum(amount) as trans_total_amount,  sum(if(state='approved', amount, 0)) as approved_total_amount
 from transactions group by month, country;
 
 ----------------------------------------------------------------------------------------------------------------------------------------------------
