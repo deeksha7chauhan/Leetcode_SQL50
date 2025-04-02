@@ -40,4 +40,5 @@ IN (SELECT player_id, MIN(event_date) AS first_login FROM ACTIVITY GROUP BY play
 ----------------------------------------------------------------------------------------------------------------------------------------------------
 #1174. Immediate Food Delivery II
 #Write a solution to find the percentage of immediate orders in the first orders of all customers, rounded to 2 decimal places.
-  
+Select round(avg(order_date = customer_pref_delivery_date)*100, 2) as immediate_percentage from Delivery where (customer_id, order_date) in (Select customer_id, min(order_date) 
+from Delivery group by customer_id);
