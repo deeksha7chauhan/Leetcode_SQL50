@@ -15,11 +15,36 @@ SELECT Department, Employee, Salary FROM (SELECT d.name AS Department, e.name AS
 Select e.name AS Employee from Employee e JOIN Employee e2 ON e.managerId = e2.id where e.salary>e2.salary; 
 ------------------------------------------------------------------------------------------------------------------------------
 
-
-
 ------------------------------------------------------------------------------------------------------------------------------
 
+------------------------------------------------------------------------------------------------------------------------------
+3436. Find Valid Emails
+Write a solution to find all the valid email addresses. A valid email address meets the following criteria:
+SELECT * from Users where email REGEXP '^[a-zA-Z0-9_]+@[a-zA-Z]+\.com$' order by user_id;
+------------------------------------------------------------------------------------------------------------------------------
+#627. Swap Salary
+#Write a solution to swap all 'f' and 'm' values (i.e., change all 'f' values to 'm' and vice versa) with a single update statement and no intermediate temporary tables.
+UPDATE Salary SET sex = IF(sex = 'm', 'f', 'm');
+------------------------------------------------------------------------------------------------------------------------------
+#183. Customers Who Never Order
+#Write a solution to find all customers who never order anything.
+SELECT c.name AS Customers FROM Customers c LEFT JOIN Orders o ON c.id = o.customerId WHERE o.id IS NULL;
+OR
+SELECT name as Customers from Customers where id not in ( select customerId from Orders)
+  
+------------------------------------------------------------------------------------------------------------------------------
+#182. Duplicate Emails
+#Write a solution to report all the duplicate emails. Note that it's guaranteed that the email field is not NULL.
+SELECT Email FROM Person GROUP BY Email HAVING COUNT(Email) > 1;
 
+------------------------------------------------------------------------------------------------------------------------------
+#607. Sales Person
+#Write a solution to find the names of all the salespersons who did not have any orders related to the company with the name "RED".
+# Write your MySQL query statement below
+select s.name from salesperson s except select p.name from salesperson p left join orders o on p.sales_id=o.sales_id left join company c on c.com_id=o.com_id 
+where c.name='RED';
+  OR
+select s.name FROM SalesPerson s where s.name NOT IN (select s.name from SalesPerson s Left JOIN Orders o ON s.sales_id=o.sales_id LEFT JOIN Company c on o.com_id=c.com_id where c.name='RED');
 
 ------------------------------------------------------------------------------------------------------------------------------
 #175. Combine Two Tables
