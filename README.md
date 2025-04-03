@@ -1,16 +1,12 @@
-**https://leetcode.com/studyplan/top-sql-50/**
-I have completed LLEETCODE SQL50 and pushed all the solved solutions per section on GitHub.
+# LeetCode SQL50 Solutions 🚀
 
-**NEW Topics/Syntaxs/Learnings**
+I have completed **LeetCode SQL50** and pushed all the solved solutions per section on GitHub.
 
-**IFNULL(..., NULL)**:Wraps the subquery to return NULL if the subquery returns no rows explicitly
-The IFNULL() function returns a specified value if the expression is NULL.
-IFNULL(expression, alt_value)
-expression(Required)- The expression to test whether is NULL
-alt_value(Required)- The value to return if the expression is NULL
-SYntax:-
-SELECT IFNULL((
-    -- Subquery here
-), NULL) AS num;
+## **New Topics / Syntax / Learnings** 📚
 
+### **1️⃣ IFNULL() Function**
+The `IFNULL()` function returns a specified value if the expression is `NULL`.
 
+#### **🔹 Syntax:**
+```sql
+SELECT IFNULL(( -- Subquery here ), NULL) AS num;
