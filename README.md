@@ -5,6 +5,9 @@ I have completed LLEETCODE SQL50 and pushed all the solved solutions per section
 
 **IFNULL(..., NULL)**:Wraps the subquery to return NULL if the subquery returns no rows explicitly
 The IFNULL() function returns a specified value if the expression is NULL.
+IFNULL(expression, alt_value)
+expression(Required)- The expression to test whether is NULL
+alt_value(Required)- The value to return if the expression is NULL
 SYntax:-
 SELECT IFNULL((
     -- Subquery here
