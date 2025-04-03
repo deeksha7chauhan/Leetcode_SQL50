@@ -1,6 +1,6 @@
 # LeetCode SQL50 Solutions 🚀
 
-I have completed **LeetCode SQL50** and pushed all the solved solutions per section on GitHub.
+I have completed **[LeetCode SQL50](https://leetcode.com/studyplan/top-sql-50/)** and pushed all the solved solutions per section on GitHub.
 
 ## **New Topics / Syntax / Learnings** 📚
 
