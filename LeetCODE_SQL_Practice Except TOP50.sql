@@ -6,7 +6,8 @@
 select d.name AS Department, e.name AS Employee, e.salary AS Salary from Employee e JOIN Department d ON e.departmentId=d.id where e.salary = (select MAX(salary) from Employee where departmentId = d.id); 
 
 #SOLUTION 2---- DENSE_RANK()
-SELECT Department, Employee, Salary FROM (SELECT d.name AS Department, e.name AS Employee, e.salary AS Salary, DENSE_RANK() OVER (PARTITION BY e.departmentId ORDER BY e.salary DESC) AS rnk FROM Employee e JOIN Department d ON e.departmentId = d.id) ranked WHERE rnk = 1;
+SELECT Department, Employee, Salary FROM (SELECT d.name AS Department, e.name AS Employee, e.salary AS Salary, DENSE_RANK() OVER (PARTITION BY e.departmentId ORDER BY e.salary DESC) AS rnk 
+FROM Employee e JOIN Department d ON e.departmentId = d.id) ranked WHERE rnk = 1;
 
 ------------------------------------------------------------------------------------------------------------------------------
 
@@ -16,7 +17,12 @@ Select e.name AS Employee from Employee e JOIN Employee e2 ON e.managerId = e2.i
 ------------------------------------------------------------------------------------------------------------------------------
 
 ------------------------------------------------------------------------------------------------------------------------------
-
+#1965. Employees With Missing Information
+#Write a solution to report the IDs of all the employees with missing information. The information of an employee is missing if:The employee's name is missing, or The employee's salary is missing.
+SELECT employee_id FROM Employees WHERE employee_id NOT IN (SELECT employee_id FROM Salaries)
+UNION
+SELECT employee_id FROM Salaries WHERE employee_id NOT IN (SELECT employee_id FROM Employees)
+order by employee_id
 ------------------------------------------------------------------------------------------------------------------------------
 3436. Find Valid Emails
 Write a solution to find all the valid email addresses. A valid email address meets the following criteria:
