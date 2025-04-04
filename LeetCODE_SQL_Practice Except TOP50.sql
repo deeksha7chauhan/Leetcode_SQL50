@@ -15,6 +15,12 @@ FROM Employee e JOIN Department d ON e.departmentId = d.id) ranked WHERE rnk = 1
 #Write a solution to find the employees who earn more than their managers.
 Select e.name AS Employee from Employee e JOIN Employee e2 ON e.managerId = e2.id where e.salary>e2.salary; 
 ------------------------------------------------------------------------------------------------------------------------------
+#1084. Sales Analysis III
+#Write a solution to report the products that were only sold in the first quarter of 2019. That is, between 2019-01-01 and 2019-03-31 inclusive.
+SELECT Product.product_id, Product.product_name FROM Product JOIN Sales ON Product.product_id = Sales.product_id GROUP BY Sales.product_id 
+HAVING MIN(Sales.sale_date) >= "2019-01-01" AND MAX(Sales.sale_date) <= "2019-03-31";
+###################WHERE clause with BETWEEN, you'd be filtering individual rows, not groups, which changes the logic.
+`WHERE sale_date BETWEEN '2019-01-01' AND '2019-03-31'` only includes rows within that range, but it doesn’t guarantee that all sales for each product fall within the range
 
 ------------------------------------------------------------------------------------------------------------------------------
 #1965. Employees With Missing Information
