@@ -29,9 +29,29 @@ SELECT employee_id FROM Employees WHERE employee_id NOT IN (SELECT employee_id F
 UNION
 SELECT employee_id FROM Salaries WHERE employee_id NOT IN (SELECT employee_id FROM Employees)
 order by employee_id
+  
 ------------------------------------------------------------------------------------------------------------------------------
-3436. Find Valid Emails
-Write a solution to find all the valid email addresses. A valid email address meets the following criteria:
+#1179. Reformat Department Table
+# Reformat the table such that there is a department id column and a revenue column for each month.
+select id,
+sum(if(month='Jan',revenue,null)) as Jan_Revenue, 
+sum(if(month='Feb',revenue,null)) as Feb_Revenue, 
+sum(if(month='Mar',revenue,null)) as Mar_Revenue, 
+sum(if(month='Apr',revenue,null)) as Apr_Revenue, 
+sum(if(month='May',revenue,null)) as May_Revenue, 
+sum(if(month='Jun',revenue,null)) as Jun_Revenue, 
+sum(if(month='Jul',revenue,null)) as Jul_Revenue, 
+sum(if(month='Aug',revenue,null)) as Aug_Revenue, 
+sum(if(month='Sep',revenue,null)) as Sep_Revenue, 
+sum(if(month='Oct',revenue,null)) as Oct_Revenue, 
+sum(if(month='Nov',revenue,null)) as Nov_Revenue, 
+sum(if(month='Dec',revenue,null)) as Dec_Revenue 
+from Department 
+group by id;
+  
+------------------------------------------------------------------------------------------------------------------------------
+#3436. Find Valid Emails
+#Write a solution to find all the valid email addresses. A valid email address meets the following criteria:
 SELECT * from Users where email REGEXP '^[a-zA-Z0-9_]+@[a-zA-Z]+\.com$' order by user_id;
 ------------------------------------------------------------------------------------------------------------------------------
 #627. Swap Salary
