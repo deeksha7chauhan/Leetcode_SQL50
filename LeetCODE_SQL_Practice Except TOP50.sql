@@ -63,6 +63,16 @@ SELECT p.firstName, p.lastName, a.city, a.state FROM Person p LEFT JOIN Address 
 SELECT DISTINCT player_id, MIN(event_date)AS first_login FROM Activity group by player_id;
 
 ------------------------------------------------------------------------------------------------------------------------------
+#586. Customer Placing the Largest Number of Orders
+#Write a solution to find the customer_number for the customer who has placed the largest number of orders.
+select customer_number from Orders group by customer_number order by COUNT(customer_number ) DESC LIMIT 1;
+
+------------------------------------------------------------------------------------------------------------------------------
+#1050. Actors and Directors Who Cooperated At Least Three Times
+#Write a solution to find all the pairs (actor_id, director_id) where the actor has cooperated with the director at least three times.
+select actor_id, director_id FROM ActorDirector group by actor_id, director_id having COUNT(actor_id) >=3;
+  
+------------------------------------------------------------------------------------------------------------------------------
 #262. Trips and Users
 #Write a solution to find the cancellation rate of requests with unbanned users (both client and driver must not be banned) each day between "2013-10-01" and "2013-10-03" with at least one trip. Round Cancellation Rate to two decimal points.
 select t.Request_at Day, ROUND((count(IF(t.status!='completed',TRUE,null))/count(*)),2) as 'Cancellation Rate' from Trips t where  t.Client_Id in (Select Users_Id from Users where Banned='No')  and t.Driver_Id in (Select Users_Id from Users where Banned='No') 
