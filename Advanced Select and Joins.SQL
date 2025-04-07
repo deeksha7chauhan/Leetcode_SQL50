@@ -7,14 +7,15 @@ JOIN Employees e2 ON e.reports_to = e2.employee_id GROUP BY e2.employee_id, e2.n
 
 #1789. Primary Department for Each Employee
 #Write a solution to report all the employees with their primary department. For employees who belong to one department, report their only department.
-SELECT employee_id,department_id
-FROM Employee
-WHERE primary_flag='Y' OR employee_id IN
-    (SELECT employee_id
-    FROM Employee
-    Group by employee_id
-    HAVING COUNT(employee_id)=1)
+SELECT employee_id,department_id FROM Employee WHERE primary_flag='Y' OR employee_id IN (SELECT employee_id FROM Employee
+Group by employee_id HAVING COUNT(employee_id)=1)
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+#610. Triangle Judgement
+#Report for every three line segments whether they can form a triangle.
+SELECT *, IF(x+y>z and y+z>x and z+x>y, "Yes", "No") as triangle FROM Triangle
 
-
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+#180. Consecutive Numbers
+#Find all numbers that appear at least three times consecutively.
 
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
