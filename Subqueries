@@ -30,3 +30,10 @@ UNION ALL
  GROUP BY m.title
  ORDER BY AVG(mr.rating) DESC, m.title ASC
  LIMIT 1);
+
+
+--------------------------------------------------------------------------------------------------------------------------------
+#1321. Restaurant Growth
+#Compute the moving average of how much the customer paid in a seven days window (i.e., current day + 6 days before). average_amount should be rounded to two decimal places.
+select distinct visited_on, sum(amount) over w as amount, round((sum(amount) over w)/7, 2) as average_amount from customer WINDOW w AS ( order by visited_on
+range between interval 6 day PRECEDING and current row) Limit 6, 999
