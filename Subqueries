@@ -44,3 +44,17 @@ range between interval 6 day PRECEDING and current row) Limit 6, 999
 
 with base AS(select requester_id id from RequestAccepted Union ALL select accepter_id id from RequestAccepted)
 select id, COUNT(*) as num from base group by 1 order by 2 DESC LIMIT 1;
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+#585. Investments in 2016
+#Write a solution to report the sum of all total investment values in 2016 tiv_2016, for all policyholders who: have the same tiv_2015 value as one or more other policyholders, and
+are not located in the same city as any other policyholder (i.e., the (lat, lon) attribute pairs must be unique).
+
+Select Round(Sum(tiv_2016),2) as tiv_2016 from Insurance where tiv_2015 in (Select tiv_2015 from insurance group by tiv_2015 Having count(*)>1)
+and (lat,lon) in (Select lat, lon from insurance group by lat,lon having count(*)=1)
+
+________________________________________________________________________________________________________________________________________________________________________________________
+#185. Department Top Three Salaries
+#Write a solution to find the employees who are high earners in each of the departments.Return the result table in any order.
+select Department, Employee, Salary from (select d.name AS Department, e.name AS Employee, e.salary AS Salary,  dense_rank() over (partition by d.name order by e.salary desc) as ranks
+from Employee e join Department d ON e.departmentId=d.id)  t  where ranks <=3
