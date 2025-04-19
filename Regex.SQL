@@ -15,3 +15,10 @@ delete p1 from Person p1, Person p2where p1.Email = p2.Email and p1.id>p2.Id;
 ####p1.Email = p2.Email: This condition matches rows where the Email values in p1 and p2 are identical.
 ####p1.id > p2.Id: This condition further filters to select rows where p1.id is greater than p2.id. This essentially means you're deleting the rows with higher IDs for each duplicate email address.
 
+#1484. Group Sold Products By The Date
+#Write a solution to find for each date the number of different products sold and their names.The sold products names for each date should be sorted lexicographically.Return the result table ordered by sell_date.
+# Write your MySQL query statement below
+SELECT sell_date, COUNT(DISTINCT product) as num_sold, GROUP_CONCAT(DISTINCT product ORDER BY product ASC) AS products from Activities group by sell_date order by sell_date;
+
+
+
