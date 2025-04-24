@@ -35,6 +35,14 @@ SELECT p.product_name, SUM(o.unit) as unit FROM Products p JOIN Orders o ON p.pr
 #The domain is '@leetcode.com'. Return the result table in any order.
 SELECT * FROM Users WHERE mail REGEXP '^[a-zA-Z][a-zA-Z0-9_.-]*@leetcode\\.com$'
 
+#176. Second Highest Salary
+#Write a solution to find the second highest distinct salary from the Employee table. If there is no second-highest salary, return null (return None in Pandas).
+select max(Salary) as SecondHighestSalary from Employee where Salary < (select max(Salary) from Employee)
+OR
+select max(salary) AS SecondHighestSalary from employee where salary not in (select max(salary) from employee)
+OR
+
+
 
 
 
