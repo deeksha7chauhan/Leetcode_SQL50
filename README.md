@@ -10,3 +10,10 @@ The `IFNULL()` function returns a specified value if the expression is `NULL`.  
 #### **🔹 Syntax:**
 ```sql
 SELECT IFNULL(( -- Subquery here ), NULL) AS num;
+
+REGEX
+[a-zA-Z]: matches any upper or lower case letter.
+\\-> In regex, . matches any character unless escaped escapes the . with \\.
+^-> starts with
+*-> Match zero or more of the preceding element.
+[a-zA-Z0-9._-]*: matches zero or more occurrences of any upper or lower case letter, digit, underscore, period, or dash.
