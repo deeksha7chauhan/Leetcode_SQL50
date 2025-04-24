@@ -1,3 +1,7 @@
+#1667. Fix Names in a Table
+#Write a solution to fix the names so that only the first character is uppercase and the rest are lowercase. Return the result table ordered by user_id.
+select user_id, CONCAT(UPPER(SUBSTR(name, 1,1)), LOWER(SUBSTR(name,2))) AS name from Users order by user_id ASC
+
 #1527. Patients With a Condition
 #Write a solution to find the patient_id, patient_name, and conditions of the patients who have Type I Diabetes. Type I Diabetes always starts with DIAB1 prefix.
 select patient_id,patient_name,conditions from Patients where conditions like 'DIAB1%'  or  conditions like '% DIAB1%' ;
