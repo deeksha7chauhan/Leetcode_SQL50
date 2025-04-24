@@ -20,9 +20,23 @@ delete p1 from Person p1, Person p2where p1.Email = p2.Email and p1.id>p2.Id;
 ####p1.id > p2.Id: This condition further filters to select rows where p1.id is greater than p2.id. This essentially means you're deleting the rows with higher IDs for each duplicate email address.
 
 #1484. Group Sold Products By The Date
-#Write a solution to find for each date the number of different products sold and their names.The sold products names for each date should be sorted lexicographically.Return the result table ordered by sell_date.
-# Write your MySQL query statement below
-SELECT sell_date, COUNT(DISTINCT product) as num_sold, GROUP_CONCAT(DISTINCT product ORDER BY product ASC) AS products from Activities group by sell_date order by sell_date;
+#Write a solution to find for each date the number of different products sold and their names.The sold products names for each date should be sorted lexicographically. Return the result table ordered by sell_date.
+select sell_date, COUNT(DISTINCT product) AS num_sold,  GROUP_CONCAT(DISTINCT product order by product separator ',') AS products FROM Activities group by sell_date order by sell_date;
+
+#1327. List the Products Ordered in a Period
+#Write a solution to get the names of products that have at least 100 units ordered in February 2020 and their amount. Return the result table in any order.
+SELECT p.product_name, SUM(o.unit) AS unit from Products p JOIN Orders o ON p.product_id=o.product_id WHERE o.order_date BETWEEN '2020-02-01' AND '2020-02-29' group by o.product_id having unit>=100;
+OR
+SELECT p.product_name, SUM(o.unit) as unit FROM Products p JOIN Orders o ON p.product_id = o.product_id where Month(order_date) = 2 and year(order_date) = '2020' group by p.product_id having unit >=100;
+
+#1517. Find Users With Valid E-Mails
+#Write a solution to find the users who have valid emails.
+#A valid e-mail has a prefix name and a domain where: The prefix name is a string that may contain letters (upper or lower case), digits, underscore '_', period '.', and/or dash '-'. The prefix name must start with a letter.
+#The domain is '@leetcode.com'. Return the result table in any order.
+SELECT * FROM Users WHERE mail REGEXP '^[a-zA-Z][a-zA-Z0-9_.-]*@leetcode\\.com$'
+
+
+
 
 
 
