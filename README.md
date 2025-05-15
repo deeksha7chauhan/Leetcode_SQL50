@@ -7,7 +7,7 @@ I have completed **[LeetCode SQL50](https://leetcode.com/studyplan/top-sql-50/)*
 ### **1️⃣ IFNULL() Function**
 The `IFNULL()` function returns a specified value if the expression is `NULL`.   The `IFNULL()` function returns a specified value if the expression is `NULL`. `IFNULL(expression, alt_value)` `expression`(Required)- The expression to test whether is `NULL` `alt_value`(Required)- The value to return if the expression is NULL
 
-#### **🔹 Syntax:**
+### **🔹 Syntax:**
 ```sql
 SELECT IFNULL(( -- Subquery here ), NULL) AS num;
 
